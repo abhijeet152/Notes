@@ -1,0 +1,113 @@
+break
+------
+
+Based on some condition, if we want to beak loop execution (i.e to come out of loop) then we should go for break statement.
+
+#! /bin/bash
+i=1
+while [ $i -le 10 ]
+do
+   if [ $i -eq 5 ];then
+	break
+   fi
+   echo $i
+    let i++
+done
+
+	
+______________________________________
+
+continue statement:
+------------------
+
+We can use coninue statement to skip current itereation and continue for the next iteration.
+# to print odd numbers.
+#! /bin/bash
+i=0
+while [ $i -le 10 ]
+do 
+	let i++
+	if [ $[i%2] -eq 0 ];then
+		continue
+	fi
+	echo $i
+done
+
+******Output*********
+[abhijit@localhost ~]$ ./test36.sh
+1
+3
+5
+7
+9
+11
+***********************
+
+
+Q. write a script to read file name and display its content.
+with extra masala to this script.
+
+#! /bin/bash
+
+while [ true ]
+do 
+	read -p " enter file name to display its content: " fname
+	#check whether file exist/regular file or not.
+	if [ -f $fname ];then
+		echo "the content of $fname: "
+		cat $fname
+	else
+		echo "$fname may not exist/regular file"
+	fi
+	read -p "do you want to display content of another file[yes/no]: " option
+	case $option in
+		[yY]|[yY][eE][sS])
+			continue
+			;;
+		[nN]|[nN][oO])
+			break
+			;;
+		*)
+			echo "please select one of Yes|No only."
+			;;
+	esac
+done
+echo "thanks for using application"
+
+________________________________________________________
+
+Q. Write a script that reads a astring as input and print its reverse?
+
+#! /bin/bash
+
+read -p "enter any string to find reverse: " str
+len=$(echo -n $str | wc -c)
+output=""
+
+while [ $len -ge 1 ]
+do
+	ch=$(echo -n $str | cut -c $len)
+	output=$output$ch
+	let len--
+done
+echo "the original string: $str"
+echo "the reversed string: $output"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

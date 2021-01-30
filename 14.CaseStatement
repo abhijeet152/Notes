@@ -1,0 +1,273 @@
+Case Statement:
+----
+like switch statement in java
+If multiple optiosn are available then it is not recommendded to use if-elif-else statement.
+It increases length of the code and reduces readability.
+to handle such type of requirements we should go for case statement.
+
+syntax:
+-------
+
+case $variable in
+   option 1 )
+	action-1
+	;;
+   option 2 )
+	action-2
+	;;
+   option n )
+	action-n
+	;;
+   * )
+	default action
+	;;
+esac
+
+Note:
+1. option1 ) this space is optional
+   option1)
+
+2. ;; semicolon can be used to come out of case statement.
+3. ;; mandatory for every action. just for default option it is optional.
+4. default action is recommended to use as the last option.
+
+Q1. write a script to read a digit from 0 to 9 and print its equivalent english word.
+
+#! /bin/bash 
+
+read -p " Enter any digit form 0-9:" n
+
+case $n in
+	0)
+	echo "zero"
+	;;
+	1)
+	echo "one"
+	;;
+	2)
+	echo "two"
+	;;
+	3)
+	echo "three"
+	;;
+	4)
+	echo "four:
+	;;
+	5)
+	echo "five"
+	;;
+	6)
+	echo "six"
+	;;
+	7)
+	echo "seven"
+	;;
+	8)
+	echo "eight"
+	;;
+	9)
+	echo "nine"
+	;;
+
+	*)
+	echo " pls enter digit from 0-9"
+	;;
+esac
+
+______________________________________
+
+Q. write a script that reads your fav. brand and reads corresponding message.
+
+#! /bin/bash
+
+read -p " enter your brand: " brand
+
+case $brand in
+	"kf")
+		echo "it is childrens brand"
+	;;
+
+	"ko")
+		echo "it is not that much kick"
+	;;
+
+	"rc")
+		echo "it is too light"
+	;;
+
+	"fo")
+		echo "buy one get one free"
+	;;
+
+	*)
+		echo " other brand are not recomended"
+	;;
+esac
+___________________________________________
+
+Q. write a script that accepts a single character and check wheterh the fiven character is alphabet or digit or special character?
+
+#! /bin/bash
+
+read -p "enter any character to check: " ch
+case $ch in
+	[a-zA-A])
+		echo "it is an alphabet symbol"
+	;;
+
+	[0-9])
+		echo "it is a digit"
+	;;
+
+	[^a-zA-Z0-9])
+		echo " it is a special character"
+	;;
+	
+	*)
+		echo "pls enter a single character only"
+
+esac
+
+___________________________________________
+
+Q. Write a script that accepts a single character and check wheter the given character is digit or special character or vowel or consonent?
+vowels:aeiou/AEIOU
+
+#! /bin/bash
+read -p "enter any cahracter to check" ch
+case $ch in
+	[0-9])
+		echo "it is a digit"
+	;;
+
+	[a-zA-Z0-9])
+		echo "it is a alphanumeric"
+	;;
+
+	[aieouAEIOU])
+		echo "it is vowel"
+	;;
+
+	[^aeiouAEIOU])
+		echo "it is a consonent"
+	;;
+
+	*)
+		echo "please enter a single character only"
+esac
+
+_____________________________________________
+
+Q. write a script that performs file operations based on provided options.
+a-> Display content
+b-> append content
+c-> overwrite content
+d-> delete content
+file name abc.txt
+--------
+#! /bin/bash
+
+echo "a-> Display content"
+echo "b-> append content"
+echo "c-> overwrite content"
+echo "d-> delete content"
+
+read -p "Please choose option from below: " option
+
+case $option in
+	a)
+		if [ -s "abc.txt" ];then
+			cat abc.txt
+		 else
+			echo "File is empty"
+		fi
+	;;
+
+	b)
+		read -p " Provide your data to append" data
+		echo $data >> abc.txt
+	;;
+
+	c)
+		read -p "provide your data to overwrite:" data
+		echo "$data > abc.txt"
+	;;
+
+	d)
+		cat /dev/null > abc.txt
+		echo " content deleted"
+	;;
+
+	*)
+		echo "please choose correct option"
+	;;
+esac
+
+
+_________________________________
+
+Q. write a script to read two interger numbers and perform required mathematical operations.
+1. Addition operation
+2. Subtraction operation
+3. Multiplication operation
+4. Division Operation
+
+
+#1 /bin/bash
+read -p "enter first number: " n1
+read -p "enter second number: " n2
+
+echo 
+echo "1. addition"
+echo "2. substraction"
+echo "3. multiplication"
+echo "4. division"
+
+read -p " choose your option: " option
+case $option in
+	1)
+	   echo "$n1 + $n2 = $((n1+n2))"
+	   ;;
+	2)
+	   echo "$n1 - $n2 = $((n1-n2))"
+	   ;;
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+

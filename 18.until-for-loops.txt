@@ -1,0 +1,367 @@
+until loop
+----------
+As long as condition is false the body will be executed.
+Once condition returns true thenonly the loop will be terminated.
+It is opposite to while loop.
+
+Q1. write a script to print from 1 to 5 by using until loop.
+
+#! /bin/bash
+
+i=1
+until [ $i -gt 5 ]
+do 
+	echo $i
+	let i++
+done
+
+------------------------
+it was used in history,  in day to day life we dont use it.
+----------------------------------------------------------
+
+for loop
+--------
+If we want to perform some action for every ite in the given list.
+
+#! /bin/bash
+
+for i in 1 2 3 4 5
+do 
+	echo "the current number: $i"
+done
+
+-------------------------
+
+eg2:
+
+#! /bin/bash
+
+for course in java python unix aws devops datascience
+do 
+	echo "course name: $course"
+done
+----------------------------
+eg: write a script that display nubers from 1 to 100 which are divisible by 10.
+
+#! /bin/bash 
+
+count=0
+for num in {1..100}
+do 
+	if [ $[num%10] -eq 0 ];then
+		echo "$num"
+		let count++
+	fi
+done
+
+------------------------------------------------
+Q. write a script to display all file names present in current working directory.
+
+#! /bin/bash
+for fname in *
+do 
+	if [ -f $fname ]; then
+		echo $fname
+	fi
+done
+
+-----------------------------------------------------
+
+Q.Write a script to append current date and time , current month calender in every .txt file present in current working directory.
+
+#! /bin/bash
+
+for fname in *.txt
+do
+	date >> $fname
+	cal >> $fname
+done
+
+---
+#! /bin/bash
+
+for fname in /home/abhijit/Desktop/*.txt
+do
+	date >> $fname
+	cal >> $fname
+done
+
+---
+
+Q. write a script that print all command line arguments.
+
+#! /bin/bash
+if [ $# -eq 0 ];then					#// $# means total no of arguments
+	echo "No arguments passed"
+	exit 1
+fi
+
+count=1
+for arg in $@						#// $@ means all args but separate argument
+do 
+	echo "command line argument $count:$arg"
+	let count++
+done
+
+--------------
+
+Q. write a script to display all employeed details where salary is greater that 2500.
+
+cut -d ":" -f 3		// -d dilimitor, -f field no
+
+#! /bin/bash
+
+for record in $(cat emp.txt)
+do
+	sal=$(echo $record | cut -d ":" -f 3)
+	if [ $sal -gt 2500 ]; then
+		echo $record
+	fi
+done
+
+-------------
+
+Q. write a script to save all employees information where salary is greater than 2500 and city is pune to pune.txt
+
+#! /bin/bash
+
+for record in $(cat emp.txt)
+do 
+	sal=$(echo $record | cut -d ":" -f 3)
+	city=$(echo $record | cut -d ":" -f 4)
+	if [ $sal -gt 2500 -a $city = "Pune" ]; then
+		echo $record >> Pune.txt
+		echo "task completed"
+	fi
+done
+
+---------------------------------
+
+Q.write a script to display least and highest salaried employess information.
+================
+#! /bin/bash
+
+max=$(cat emp.txt | head -1 | cut -d ":" -f 3)
+for record in $(cat emp.txt)
+do
+	sal=$(echo $record | cut -d ":" -f 3)
+	if [ $sal -gt max ];then
+		max=$sal
+	fi
+done
+echo "maximum salary : $max"
+================
+
+#! /bin/bash
+
+max=$(cat emp.txt | head -1 | cut -d ":" -f 3)
+min=$(cat emp.txt | head -1 | cut -d ":" -f 3)
+
+max_record=$(cat emp.txt | head -1)
+min_record=$(cat emp.txt | head -1)
+for record in $(cat emp.txt)
+do
+	sal=$(echo $record | cut -d ":" -f 3)
+	if [ $sal -gt $max ];then
+		max=$sal
+		max_record=$record
+	fi
+	if [ $sal -lt $min ];then
+		min=$sal
+		min_record=$record
+	fi
+done
+echo "maximum salary : $max"
+echo "the maximum salaried employee details"
+echo "emp no: $(echo $max_record | cut -d ":" -f 1)"
+echo "emp name: $(echo $max_record | cut -d ":" -f 2)"
+echo "emp Salary: $(echo $max_record | cut -d ":" -f 3)"
+echo "emp address: $(echo $max_record | cut -d ":" -f 4)"
+echo
+echo "min salary : $min"
+echo "the min salaried employee details"
+echo "emp no: $(echo $min_record | cut -d ":" -f 1)"
+echo "emp name: $(echo $min_record | cut -d ":" -f 2)"
+echo "emp Salary: $(echo $min_record | cut -d ":" -f 3)"
+echo "emp address: $(echo $min_record | cut -d ":" -f 4)"
+
+_____________________________________________
+
+Q. write a script to display multiple files content to the terminal and all filenames passed as commadn line arguments.
+
+#! /bin/bash
+
+if [ $# -eq 0 ];then
+	echo "please provide atleast one argument"
+	exit 1
+fi
+
+for fname in $@
+do
+	if [ -f $fname ];then
+		
+		cat $fname
+		echo
+	else
+		echo "$fname does not exist"
+	fi
+done
+
+------------------------------------
+
+q. Write a script to append multiple files content to a single file result.txt
+   filenames are passed as command line argument.
+
+#! /bin/bash
+
+if [ $# -eq 0 ];then
+	echo "please provide atleast one argument"
+	exit 1
+fi
+
+for fname in $@
+do
+	if [ -f $fname ];then
+		
+		cat $fname >> result.txt
+		echo
+	else
+		echo "$fname does not exist"
+	fi
+done
+echo "task completed"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

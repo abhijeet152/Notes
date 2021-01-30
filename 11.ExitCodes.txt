@@ -1,0 +1,19 @@
+Exit codes / Status code
+
+Every command return some value after execution, which  indicates that wehterh it is successfullly executed or not. This return value is nothing but exit code or status code.
+we can find exit code by using $?
+
+zero	--> command/script executed successfully.
+non-zero	--> command/script not executed successfully.
+
+0 -255	--> the allowed values for status code/exit code
+
+$ echo $?		// 0 successful
+$ rm sdf.txt		// no file found.
+$ echo $?		// 1 unsuccessful
+
+exit command:
+-------------
+
+In the script to stop execution in the middle, we can use exit comand.
+

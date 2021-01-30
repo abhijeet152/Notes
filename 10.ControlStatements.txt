@@ -1,0 +1,330 @@
+Control Statements:
+-------------------
+The statements which control execution flow at runtime are called control statements.
+
+1. if statement
+2. case statement
+3. while loop
+4. for loop
+5. until loop
+6. break
+7. break
+7. continue
+8. exit
+
+1. if statement
+---------------
+there are 4 types of if statements
+1. simple if
+2. if else
+3. nested if 
+4. ladder if
+
+1. simple if
+syntax:
+-------
+
+if [ condition ]
+then
+	action
+fi
+
+//if condition is true then only action will be executed.
+// if then if you want to take in same line:-
+if [ condition ];then
+	action
+fi
+__________________________________________
+
+Q. Write a script to read name from the end user and if name is sunny then display some special message.
+
+#! /bin/bash
+read -p "Enter Your name:" name
+
+if [ $name = "sunny" ]
+then
+	echo "hello sunny very very good morning"
+fi
+echo " Welcome $name to the linux world "
+_______________________________________________
+
+2. if-else 
+-----------
+
+if [ condition ]
+then
+	action1- if condition is true
+else
+	action2 -if condition is false
+fi
+_________________
+
+#! /bin/bash
+
+read -p " enter the name: " name
+
+if [ $name = "abhi" ]
+then
+	echo " Hello Abhi, Most welcome to linux world"
+else	
+	echo " Hello Guest"
+fi
+echo "Thankyou for visiting"
+__________________________
+
+3. nested if
+-------------
+if [ condition1 ]
+then
+	...action1
+	if [ condition2 ]
+	then
+		...action2
+	else
+		...action3
+	fi
+else
+	...action4
+fi
+__________________________
+
+4. ladder if
+------------
+if [ condition-1 ];then
+	...action-1
+ elif [ condition-2 ];then
+	...action-2
+ elif [ condition-3 ];then
+	...action-3
+ elif [ condition-4 ];then 
+	...action-4
+ else
+	..default action
+fi
+
+Q. write a script to find greator of two numbers.
+
+#! /bin/bash
+
+read -p " enter 1st no: " a
+read -p " enter 2nd no: " b
+
+if [ $a -gt $b ];then
+	echo " $a is greater no"
+else
+	echo " $b is greater no"
+fi
+
+_______________________________
+
+Q. Write a script to check wheter nos are equal are not
+If nos are not equal then print greater number.
+
+#! /bin/bash
+read -p " enter 1st no: " a
+read -p " enter 2nd no: " b
+
+if [ $a -eq $b ];then
+	echo " both nos are equal"
+ elif [ $a -gt $b ];then
+	echo " $a is greater"
+ else 
+	echo " $b is greater"
+fi
+
+________________________________
+
+Q. Write a script to find greater of 3 numbers.
+
+#! /bin/bash
+read -p "enter 1st no: " a
+read -p "enter 2nd no: " b
+read -p "enter 3rd no: " c
+
+if [ $a -gt $b ];then
+	if [ $a -gt $c ];then
+		echo " $a is greater"
+	else
+		echo " $c is greater"
+	fi
+elif [ $b -gt $c ];then
+	echo " $b is greater "
+else 
+	echo " $c is greater "
+fi
+_________________________________
+2nd way/approach
+
+#! /bin/bash
+read -p "enter 1st no: " a
+read -p "enter 2nd no: " b
+read -p "enter 3rd no: " c
+
+if [ $a -gt $b -a $a -gt $b];then
+	echo "$a is greater no"
+ elif [ $b -gt $c ];then
+	echo "$b is greater no"
+ else
+	echo "$c is greater no"
+fi
+
+______________________
+-a	logical AND
+-o	logical OR
+!	negation
+______________________
+
+Q. Write a script to check wheter student is pass or fail based on 3 subject marks.
+In any subject if marks less than 35 then student result is fail.
+
+#! /bin/bash
+read -p "Enter first subject marks: " a
+read -p "Enter second subject marks: " b
+read -p "Enter third subject marks: " c
+
+if [ $a -lt 35 ];then
+	echo "The result is: fail"
+ elif [ $b -lt 35 ];then
+	echo "the result is: fail"
+ elif [ $c -lt 35 ];then
+	echo "the result is: fail"
+ else 
+	echo " the result is pass"
+fi
+
+__________________________________
+2nd way:
+
+#! /bin/bash
+read -p "Enter first subject marks: " a
+read -p "Enter second subject marks: " b
+read -p "Enter third subject marks: " c
+
+if [ $a -ge 35 -a $b -ge 35 -a $c -ge 35 ];then
+	echo "the result is pass"
+else
+	echo "the result is fail"
+fi
+___________________________________
+
+Funniest example with if-else
+Q. Write a script to read your favourite brand and print the corresponding info.
+
+#! /bin/bash
+read -p "enter your favourite brand: " brand
+
+if [ $brand = "kf" ];then
+	echo "it is childrens brand"
+ elif [ $brand = "ko" ];then
+	echo "it is not that much kick"
+ elif [ $brand = "rc" ];then
+	echo "buy one get one free"
+else
+	echo "other brands are not recomended"
+fi
+
+__________________________________
+Q. write a script to read an integer number and check whether the fiven number is +ve number or -ve number.
+
+#! /bin/bash
+read -p "enter any integer number to check: " n
+if [ $n -lt 0 ];then
+	echo "$n is negative no"
+else 
+	echo "$n is positive no"
+fi
+
+_________________________________
+
+q. Write a script that reads a n integer number and check whether it is even or odd.
+
+read -p " enter the no: " n
+
+if [ $[n%2] -eq 0 ];then
+	echo "$n is even no"
+else
+	echo "$n is odd no"
+fi
+
+_____________________________________
+
+Q. Write a script that reads an integer number and check whether it is 3 digit number or not?
+
+#! /bin/bash
+
+read -p " enter the no: " n
+
+if [ $n -ge 100 -a $n -le 999 ];then 
+	echo "$n is 3 digit no"
+ else
+	echo "$n is not a 3 digit no"
+fi
+
+______________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

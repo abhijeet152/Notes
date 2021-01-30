@@ -1,0 +1,154 @@
+Operators:
+
+1. Arithmetic Operators
+
++	Addition
+-	Substraction
+*	Multiplication
+/	Division
+%	Modulo operator
+
+2. Relational Operators (Numeric Comparison Operators):
+
+-gt	-> greater than
+-ge	-> greater than or equal to 
+-lt	-> less than
+-le	-> less than or equal to 
+-eq	-> equal to
+-ne	-> not equal to 
+
+3. Logical operators (returns boolean values)
+
+-a	-> logical AND
+-o	-> logical OR
+!	-> logical NOT
+
+4. Assignment Operator
+
+=
+i++	-> increament operator
+i--	-> decrement operator
+
+How to perform mathematical operations?
+There are multiple ways to perform.
+1. by using 'expr' keyword
+2. by using 'let' keyword
+3. by using '(())' double parenthesis
+4. by using '[]' square bracket.
+
+1. by using expr keyword
+-------------------------
+expr means expression and it is a keyword.
+echo "enter the value of a:" a
+echo "enter the value of b:" b
+sum=`expr $a + $b`		// space is mandatory before and after + symbol
+sum=$(expr $a +$b)
+
+Note: 
+While using expr keyword, $ symbol is andatory.
+Space is mandatory,before and after + symbol.
+For equal symbol we should not give space.
+
+2. by using let keyword
+------------------------
+echo "enter the value of a:" a
+echo "enter the value of b:" b
+let sum=$a+$b
+echo "the sum:-$sum"
+
+let sum=a+b
+echo"the sum:$su"
+
+Note:
+While using let keyword, $ symbol is optional.
+We should not give space befor and after + symbol.
+
+3. by using double parenthesis (())
+------------------------------------
+echo "enter the value of a:" a
+echo "enter the value of b:" b
+sum=$(($a+$b))
+sum=$((a+b))
+
+echo"the sum:$sum"
+
+both dolor and space symbol are optional.
+
+4. by using square bracket[]
+---------------------------
+sum=$[a + b]
+echo "the sum is $sum"
+both dolar and space symbol are optional.
+
+___________________________________
+All these 4 approaches will work only for intergral arithmetic only(only for integers)
+For floating point we need to use bc command.(binary calculator)
+
+From terminal by using bc command.
+$ bc
+10.5+20.6	//31.1
+10.2^2		//104.0
+10+20		//30
+
+bc command can work for both integral and floating point arithmetic.
+ctrl+d 		// to come out of bc calculator.
+
+Q. Script to perform floating point arithmetic:
+-----------------------------------------------
+
+read -p " enter 1st no: " a
+read -p " enter 2nd no: " b
+
+sum=$(echo $a +$b | bc)
+
+echo "sum = $sum "
+
+echo "the difference: $(echo $a-$b | bc)"
+echo "the product: $(echo $a*$b | bc)"
+
+Q.Write a script to read a 4 digit intiger no and print the sum of digits present in that number?
+
+#! /bin/bash
+read -p "Enter any 4-digit integer number: " n
+
+a=$(echo $n | cut -c 1)
+b=$(echo $n | cut -c 2)
+c=$(echo $n | cut -c 3)
+d=$(echo $n | cut -c 4)
+
+sum=$[a+b+c+d]
+echo "the sum of digits in $n is: $sum"
+
+
+Q. Write a script to read employee monthly salary and print his bonus.
+the bonus should be 25% of anual salary.
+
+Monthly salary: 10000 
+Annual salary: 120000
+Bonus: 30000
+
+#! /bin/bash
+
+read -p "enter the salary: " salary
+annual_salary=$[salary*12]
+bonus=$[annual_salary*25/100]
+
+echo " bonus is : $bonus "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

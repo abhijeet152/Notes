@@ -1,0 +1,86 @@
+String Test Options:
+---------------------
+
+1. str1 = str2 	// returns true if both strings are same
+2. str1 != str2	// returns true if both strings are not same
+3. -z str	// returns true if the string is empty
+4. -n str	// returns true if the string is non empty
+5. str1 > str2	// returns true if str1 is alphabetically greater than str2
+6. str1 < str3	// returns true if str1 is alphabetically less than str2
+
+________________________________________________________-
+< symbol has a special meaning i.e input redirection
+eg.
+cat < file1.txt		// shows content of file
+cat file1.txt		// same as abouve.
+
+______________________________________________________
+
+Q.Demo program for String comparision:
+
+#! /bin/bash
+
+read -p "Enter first string: " str1
+read -p "Enter second string: " str2
+
+if [ $str1 = $str2 ];then
+	echo "both strings are equal"
+elif [ $str1 \< $str2 ];then
+	echo "$str1 is less than $str2"
+else
+	echo "$str1 is greater than $str2"
+fi
+
+_________________________________________________
+
+Q. write a script to test wheter the fiven string is empty or not ? if it isnot empty print its length.
+#! /bin/bash
+read -p "enter any string to test: " str
+
+if [ -z $str ];then
+	echo "provided input string is empty string"
+else
+	echo "provided input string is not empty"
+	echo " length is $(echo -n $str | wc -c)"
+fi
+
+_________________________________________________-
+
+Q. Write a script to check login user is root or not.
+If login user is root then display first 5 current running process.
+---
+whoami		// current user
+ps		// process status
+ps -ef 		// every process full list
+---
+
+#! /bin/bash
+user=$(whoami)
+
+if [ $user != "root" ];then
+	echo " user is not root user"
+else
+	echo " user is root user
+	echo " 5 current process: "
+	ps -ef | head -6
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

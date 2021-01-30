@@ -1,0 +1,119 @@
+Q.write a script to gather data  from employee.
+
+#! /bin/bash
+
+while [ true ]
+do
+	read -p "enter employee number: " eno
+	read -p "enter employee name: " ename
+	read -p "enter employee salary: " esal
+	read -p "enter employee address: " eaddr
+	echo "$eno:$ename:$esal:$eaddr " >> emp.txt
+	echo "employee record inserted successfully"
+
+	read -p "do you want to insert one more record[yes|no]: " option
+	case $option in
+		[yY]|[yY][eE][sS])
+			continue
+			;;
+		[nN]|[nN][oO])
+			break
+			;;
+		*)
+			echo "please enter yes|no only"
+	esac
+done
+echo "open emp.txt to check employee details"
+
+
+
+How to read dataf rom file by using while loop:
+---
+#syntax-1
+#! /bin/bash
+
+cat emp.txt | 
+while read l
+do 
+	echo $l
+done
+
+------
+#Note:
+as long as data is available it will execute line by line.
+--------------------------------------
+#syntax-2
+
+while read line
+do
+	do something with tat data
+done < emp.txt
+-------
+
+__________________________________________
+Q. Write a script to implement cat command to display file content with -n option?
+
+#! /bin/bash
+fname=$1
+
+if [ ! -e $fname ];then
+	echo "no such file or directory"
+	exit 1
+fi
+
+if [ -d $fname ];then
+	echo "It is a directory"
+	exit 2
+fi
+
+if [ ! -s $fname ];then
+	echo "It is empty file"	
+	exit 3
+fi
+
+count=1
+while read line
+do 
+	echo "$count	$line"
+	let count++
+done < $fname
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
